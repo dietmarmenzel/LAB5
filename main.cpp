@@ -25,11 +25,11 @@
 //Definición de pines para los potenciómetros
 #define pot1 34
 #define pot2 35
-
+//Definicón de pines para las LEDs
 #define LEDROJA 18
 #define LEDVERDE 19
 #define LEDAZUL 5
-
+//Definición de la frecuencia, resolución y canal de las LEDs para el PWM
 #define frecuencia 60
 #define resolucion 8
 #define LEDROJACANAL 1
@@ -41,7 +41,9 @@
 //*****************************************************************************
 //Varibale para el contador de 8 bits
 void Contador(void);
+//Variable para el PWM
 void PWM(void);
+//Variable para los potenciómetros
 void Potenciometros(void);
 
 //*****************************************************************************
@@ -52,17 +54,18 @@ int ContadorBoton1 = 0; //Contador Boton en entero
 // Create An LCD Object. Signals: [ RS, EN, D4, D5, D6, D7 ]
 LiquidCrystal LCD(rs, en, d4, d5, d6, d7);
 
-int Potenciometro1 = 0; 
-int Potenciometro2= 0; 
+int Potenciometro1 = 0; //Potenciómetro 1 en entero
+int Potenciometro2= 0;  //Potenciómetro 2 en entero
 
-String t="";
+String t=""; //cadena de caracteres
 
-int DCR = 0; 
-int DCV = 0;
-int DCA = 0;
+int DCR = 0; //Entero DCrojo
+int DCV = 0; //Entero DCverde
+int DCA = 0; //Entero Dazul
 
 long LastTime; 
 long LastTime2;
+//Tiempo de muestra 
 int SampleTime1 = 250;
 int SampleTime2 = 1000;
 
@@ -75,16 +78,17 @@ void setup() {
   // Initialize The LCD. Parameters: [ Columns, Rows ]
   LCD.begin(16, 2); //Pantalla LCD 16*2
   // Clears The LCD Display
-
+  
   PWM();
+  //Definiendo los LEDs como salidas
   pinMode(LEDROJA, OUTPUT);
   pinMode(LEDVERDE, OUTPUT);
   pinMode(LEDAZUL, OUTPUT);
-
+  //Estados de los LEDs
   digitalWrite(LEDROJA, 0);
   digitalWrite(LEDVERDE, 0);
   digitalWrite(LEDAZUL, 0);
-
+  
   LastTime= millis();
   LastTime2= millis();
   
@@ -94,13 +98,14 @@ void setup() {
 // Loop Principal
 //*****************************************************************************
 void loop() {
-
+  //Delay para los potenciómetros
   if (millis()-LastTime2 >= SampleTime2){
     Potenciometros();
     LastTime2 = millis();
   }
 
   if (millis()-LastTime >= SampleTime1){
+    
     //Asignando lo que tiene que decir la pantalla LCD
     LCD.clear();
     LCD.print("Rojo");
@@ -108,7 +113,7 @@ void loop() {
     LCD.print("Verde");
     LCD.print(" ");
     LCD.print("Azul");
-
+    //Posicion del LCD cursor
     LCD.setCursor(1,1);
     LCD.print(Potenciometro1);
     LCD.print(' '  );
@@ -119,7 +124,7 @@ void loop() {
     
     LastTime=millis();
   }
-
+   //Iniciando contador
    Contador();
   if(t != NULL){
     Serial.print("t dentro del loop ");
@@ -138,7 +143,7 @@ void loop() {
       ContadorBoton1=255;
 
     }
-
+    //Contador de 8 bits
     ledcWrite(LEDAZULCANAL,ContadorBoton1);
     Serial.print("Contador: ");
     Serial.print(ContadorBoton1);
@@ -158,7 +163,7 @@ void loop() {
       ContadorBoton1=0;
 
     }
-
+    //Contador de 8 bits
     ledcWrite(LEDAZULCANAL,ContadorBoton1);
     Serial.print("Contador: ");
     Serial.print(ContadorBoton1);
@@ -192,7 +197,7 @@ void PWM(void){
 
 }
 
-//POTENCIOMETROS
+//Función de los Potenciómetros
 void Potenciometros(void ){
   Potenciometro1=analogReadMilliVolts(pot1);
   Potenciometro2=analogReadMilliVolts(pot2);
@@ -202,14 +207,11 @@ void Potenciometros(void ){
 
   ledcWrite(LEDROJACANAL, Potenciometro1);
   ledcWrite(LEDVERDECANAL, Potenciometro2);
-
+  //Asignando lo que tiene que decir la LCD
   Serial.print("Pot1:");
   Serial.println(Potenciometro1);
   Serial.print("Pot2:");
   Serial.println(Potenciometro2);
   
-
-
 }
   //FIN DEL CÓDIGO
-

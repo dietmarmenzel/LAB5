@@ -35,3 +35,12 @@
 #define LEDROJACANAL 1
 #define LEDVERDECANAL 2
 #define LEDAZULCANAL 0
+
+//*****************************************************************************
+// Prototipos de función
+//*****************************************************************************
+//Varibale para el contador de 8 bits
+void Contador(void);
+void PWM(void);
+void Potenciometros(void);
+

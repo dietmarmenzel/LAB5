@@ -192,4 +192,24 @@ void PWM(void){
 
 }
 
+//POTENCIOMETROS
+void Potenciometros(void ){
+  Potenciometro1=analogReadMilliVolts(pot1);
+  Potenciometro2=analogReadMilliVolts(pot2);
+
+  Potenciometro1 = map(Potenciometro1, 0, 3300, 0, 255);
+  Potenciometro2= map(Potenciometro2, 0, 3300, 0, 255);
+
+  ledcWrite(LEDROJACANAL, Potenciometro1);
+  ledcWrite(LEDVERDECANAL, Potenciometro2);
+
+  Serial.print("Pot1:");
+  Serial.println(Potenciometro1);
+  Serial.print("Pot2:");
+  Serial.println(Potenciometro2);
+  
+
+
+}
+  //FIN DEL CÓDIGO
 

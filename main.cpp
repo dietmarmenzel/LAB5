@@ -94,7 +94,7 @@ void setup() {
 // Loop Principal
 //*****************************************************************************
 void loop() {
-    
+
   if (millis()-LastTime2 >= SampleTime2){
     Potenciometros();
     LastTime2 = millis();
@@ -108,3 +108,31 @@ void loop() {
     LCD.print("Verde");
     LCD.print(" ");
     LCD.print("Azul");
+
+        LCD.setCursor(1,1);
+    LCD.print(Potenciometro1);
+    LCD.print(' '  );
+    LCD.print(Potenciometro2);
+    LCD.print("     ");
+    LCD.print(ContadorBoton1);
+    
+    
+    LastTime=millis();
+  }
+
+   Contador();
+  if(t != NULL){
+    Serial.print("t dentro del loop ");
+    Serial.print(t);
+  
+      }
+      
+  if (t=="-"){
+    Serial.print("Entro al menos");
+    if (ContadorBoton1>0){
+      ContadorBoton1 = ContadorBoton1-1;
+
+    }
+
+
+

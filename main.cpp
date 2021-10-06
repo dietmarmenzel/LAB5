@@ -75,3 +75,17 @@ void setup() {
   // Initialize The LCD. Parameters: [ Columns, Rows ]
   LCD.begin(16, 2); //Pantalla LCD 16*2
   // Clears The LCD Display
+
+  PWM();
+  pinMode(LEDROJA, OUTPUT);
+  pinMode(LEDVERDE, OUTPUT);
+  pinMode(LEDAZUL, OUTPUT);
+
+  digitalWrite(LEDROJA, 0);
+  digitalWrite(LEDVERDE, 0);
+  digitalWrite(LEDAZUL, 0);
+
+  LastTime= millis();
+  LastTime2= millis();
+  
+}

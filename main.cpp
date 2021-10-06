@@ -89,3 +89,22 @@ void setup() {
   LastTime2= millis();
   
 }
+
+//*****************************************************************************
+// Loop Principal
+//*****************************************************************************
+void loop() {
+    
+  if (millis()-LastTime2 >= SampleTime2){
+    Potenciometros();
+    LastTime2 = millis();
+  }
+
+  if (millis()-LastTime >= SampleTime1){
+    //Asignando lo que tiene que decir la pantalla LCD
+    LCD.clear();
+    LCD.print("Rojo");
+    LCD.print(" ");
+    LCD.print("Verde");
+    LCD.print(" ");
+    LCD.print("Azul");

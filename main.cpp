@@ -166,5 +166,17 @@ void loop() {
 
   }  
 }
+//Iniciando los parámetros en los que tiene que trabajar el contador de 8 bits
+void Contador(void){
+  if(Serial.available()>0 ){
+
+    t =Serial.readStringUntil('\n');
+
+    Serial.print("El mensaje dice que: ");
+    Serial.println(t);
+
+  }
+
+}
 
 

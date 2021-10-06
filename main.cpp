@@ -49,3 +49,9 @@ void Potenciometros(void);
 //*****************************************************************************
 int ContadorBoton1 = 0; //Contador Boton en entero
 
+// Create An LCD Object. Signals: [ RS, EN, D4, D5, D6, D7 ]
+LiquidCrystal LCD(rs, en, d4, d5, d6, d7);
+
+int Potenciometro1 = 0; 
+int Potenciometro2= 0; 
+

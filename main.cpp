@@ -179,4 +179,17 @@ void Contador(void){
 
 }
 
+//Función PWM
+void PWM(void){
+  ledcSetup(LEDROJACANAL, frecuencia,resolucion);
+  ledcAttachPin(LEDROJA, LEDROJACANAL);
+
+  ledcSetup(LEDVERDECANAL, frecuencia,resolucion);
+  ledcAttachPin(LEDVERDE, LEDVERDECANAL);
+
+  ledcSetup(LEDAZULCANAL, frecuencia,resolucion);
+  ledcAttachPin(LEDAZUL, LEDAZULCANAL);
+
+}
+
 

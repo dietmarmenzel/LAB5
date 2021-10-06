@@ -109,7 +109,7 @@ void loop() {
     LCD.print(" ");
     LCD.print("Azul");
 
-        LCD.setCursor(1,1);
+    LCD.setCursor(1,1);
     LCD.print(Potenciometro1);
     LCD.print(' '  );
     LCD.print(Potenciometro2);
@@ -134,5 +134,37 @@ void loop() {
 
     }
 
+    else if(ContadorBoton1 <=0){
+      ContadorBoton1=255;
+
+    }
+
+    ledcWrite(LEDAZULCANAL,ContadorBoton1);
+    Serial.print("Contador: ");
+    Serial.print(ContadorBoton1);
+    t="";
+
+    }
+
+     
+  if (t=="+"){
+        Serial.print("Entro al mas");
+    if (ContadorBoton1<255){
+      ContadorBoton1 = ContadorBoton1+1;
+
+    }
+
+    else if(ContadorBoton1 >=255){
+      ContadorBoton1=0;
+
+    }
+
+    ledcWrite(LEDAZULCANAL,ContadorBoton1);
+    Serial.print("Contador: ");
+    Serial.print(ContadorBoton1);
+    t="";
+
+  }  
+}
 
 

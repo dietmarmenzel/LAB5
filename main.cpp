@@ -44,3 +44,8 @@ void Contador(void);
 void PWM(void);
 void Potenciometros(void);
 
+//*****************************************************************************
+// Variables Globales
+//*****************************************************************************
+int ContadorBoton1 = 0; //Contador Boton en entero
+

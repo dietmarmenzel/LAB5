@@ -65,3 +65,13 @@ long LastTime;
 long LastTime2;
 int SampleTime1 = 250;
 int SampleTime2 = 1000;
+
+//*****************************************************************************
+// Configuración
+//*****************************************************************************
+void setup() {
+  Serial.begin(115200); //Configuración serial
+  //LCD_Init(rs, en, d4, d5, d6, d7);
+  // Initialize The LCD. Parameters: [ Columns, Rows ]
+  LCD.begin(16, 2); //Pantalla LCD 16*2
+  // Clears The LCD Display

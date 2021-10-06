@@ -55,3 +55,13 @@ LiquidCrystal LCD(rs, en, d4, d5, d6, d7);
 int Potenciometro1 = 0; 
 int Potenciometro2= 0; 
 
+String t="";
+
+int DCR = 0; 
+int DCV = 0;
+int DCA = 0;
+
+long LastTime; 
+long LastTime2;
+int SampleTime1 = 250;
+int SampleTime2 = 1000;
